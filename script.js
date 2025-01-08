@@ -9,25 +9,45 @@ let isGameUnlocked = false;
 let spinHistory = [];
 
 // Share on WhatsApp
-function shareOnWhatsApp() {
-    const gameLink = "https://hansoswald.github.io/-spinning-game/"; // Your live website link
-    const message = encodeURIComponent(
-        `Check out this amazing spinning game and win exciting prizes! ${https://hansoswald.github.io/-spinning-game/}`
-    );
-    const url = `https://api.whatsapp.com/send?text=${message}`;
-    window.open(url, '_blank');
-
-    // Update share status and unlock the game
-    const statusElement = document.getElementById('share-status');
+// Wait for the DOM to load
+document.addEventListener('DOMContentLoaded', () => {
+    const shareButton = document.getElementById('share-btn');
     const spinButton = document.getElementById('spin-btn');
+    const statusElement = document.getElementById('share-status');
 
-    if (statusElement && spinButton) {
-        statusElement.textContent = 'Game unlocked! You can now spin the wheel!';
-        spinButton.disabled = false;
+    // Attach event listener to the share button
+    if (shareButton) {
+        shareButton.addEventListener('click', shareOnWhatsApp);
     } else {
-        console.error('Element IDs "share-status" or "spin-btn" not found in your HTML.');
+        console.error('Share button not found!');
     }
-}
+
+    function shareOnWhatsApp() {
+        const gameLink = "https://hansoswald.github.io/-spinning-game/"; // Correct live link
+        const message = encodeURIComponent(
+            const message = encodeURIComponent(
+    `🎉 Don't miss out! Play this exciting spinning game and win amazing prizes NOW: ${https://hansoswald.github.io/-spinning-game/}`
+);
+
+        );
+        const url = `https://api.whatsapp.com/send?text=${message}`;
+        window.open(url, '_blank'); // Open WhatsApp link
+
+        // Update share status and enable the spin button
+        if (statusElement && spinButton) {
+            statusElement.textContent = 'Game unlocked! You can now spin the wheel!';
+            spinButton.disabled = false; // Enable spin button
+        } else {
+            // Log errors if elements are not found
+            if (!statusElement) {
+                console.error('Element with ID "share-status" not found.');
+            }
+            if (!spinButton) {
+                console.error('Element with ID "spin-btn" not found.');
+            }
+        }
+    }
+});
 
 
 
