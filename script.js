@@ -10,6 +10,7 @@ let spinHistory = [];
 
 // Share on WhatsApp
 function shareOnWhatsApp() {
+  const gameLink = "https://github.com/hansoswald/-spinning-game.git";
   const message = encodeURIComponent(
     "Check out this amazing spinning game and win exciting prizes! [https://github.com/hansoswald/-spinning-game.git]"
   );
