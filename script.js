@@ -10,9 +10,9 @@ let spinHistory = [];
 
 // Share on WhatsApp
 function shareOnWhatsApp() {
-  const gameLink = "https://github.com/hansoswald/-spinning-game.git";
+  const gameLink = "https://hansoswald.github.io/-spinning-game/"; // Your live website link
   const message = encodeURIComponent(
-    "Check out this amazing spinning game and win exciting prizes! [https://github.com/hansoswald/-spinning-game.git]"
+    `Check out this amazing spinning game and win exciting prizes! ${https://hansoswald.github.io/-spinning-game/}`
   );
   const url = `https://api.whatsapp.com/send?text=${message}`;
   window.open(url, '_blank');
@@ -21,6 +21,7 @@ function shareOnWhatsApp() {
   document.getElementById('share-status').textContent = 'Game unlocked! You can now spin the wheel!';
   document.getElementById('spin-btn').disabled = false;
 }
+
 
 // Toggle Instructions
 document.getElementById('instructions-btn').addEventListener('click', () => {
