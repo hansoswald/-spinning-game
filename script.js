@@ -10,17 +10,25 @@ let spinHistory = [];
 
 // Share on WhatsApp
 function shareOnWhatsApp() {
-  const gameLink = "https://hansoswald.github.io/-spinning-game/"; // Your live website link
-  const message = encodeURIComponent(
-    `Check out this amazing spinning game and win exciting prizes! ${https://hansoswald.github.io/-spinning-game/}`
-  );
-  const url = `https://api.whatsapp.com/send?text=${message}`;
-  window.open(url, '_blank');
+    const gameLink = "https://hansoswald.github.io/-spinning-game/"; // Your live website link
+    const message = encodeURIComponent(
+        `Check out this amazing spinning game and win exciting prizes! ${https://hansoswald.github.io/-spinning-game/}`
+    );
+    const url = `https://api.whatsapp.com/send?text=${message}`;
+    window.open(url, '_blank');
 
-  isGameUnlocked = true;
-  document.getElementById('share-status').textContent = 'Game unlocked! You can now spin the wheel!';
-  document.getElementById('spin-btn').disabled = false;
+    // Update share status and unlock the game
+    const statusElement = document.getElementById('share-status');
+    const spinButton = document.getElementById('spin-btn');
+
+    if (statusElement && spinButton) {
+        statusElement.textContent = 'Game unlocked! You can now spin the wheel!';
+        spinButton.disabled = false;
+    } else {
+        console.error('Element IDs "share-status" or "spin-btn" not found in your HTML.');
+    }
 }
+
 
 
 // Toggle Instructions
